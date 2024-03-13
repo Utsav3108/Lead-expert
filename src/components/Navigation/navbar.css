@@ -1,0 +1,20 @@
+.nav-container{
+    list-style: none; /* Remove default list styles */
+    display: flex;
+    box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav-list{
+    margin-right: 40px; /* Add margin between navbar items */
+    padding-bottom: 3px;
+}
+
+.nav-list img {
+    width: 15px; /* Set icon width as needed */
+    margin-right: 5px; /* Add margin between icon and text */
+    font-size: 12px;
+    font-family: 'Arial';
+  }
