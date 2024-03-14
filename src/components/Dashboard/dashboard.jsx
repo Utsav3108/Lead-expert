@@ -8,6 +8,7 @@ import Code from './../../assets/code.svg'
 import Bell from './../../assets/bell-2.svg'
 import Cross from './../../assets/cross.svg'
 import Globe from './../../assets/globe-2.svg'
+import Title from '../Title/Title';
 
 const Dashboard = () => {
 
@@ -27,10 +28,7 @@ const Dashboard = () => {
 
   return(
     <>
-    <div className='List-container'>
-      <span id='list-label'>List <span id="widget">Widget | List</span></span>
-      <button id='bt-addwidget'>Add Widget</button>
-    </div>
+    <Title main_name='List' sub_name_1='Widget' subname_2='List' button_name='Add Widget'/>
     <div className='table-container'>
       <div className='tab-elements'>
         <input id='search' type='text' placeholder='Search using name and domain'/>
@@ -88,7 +86,7 @@ const Dashboard = () => {
       
       </div>
     </div>
-    </>
+  </>
   )
 }
 
