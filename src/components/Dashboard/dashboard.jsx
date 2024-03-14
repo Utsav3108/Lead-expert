@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import "./dashboard.css"
 import GreenDot from './../../assets/green-dot.png'
 import Pencil from './../../assets/pencil.svg'
@@ -8,16 +9,21 @@ import Bell from './../../assets/bell-2.svg'
 import Cross from './../../assets/cross.svg'
 import Globe from './../../assets/globe-2.svg'
 
-const dashboard = () => {
+const Dashboard = () => {
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const td = document.getElementById('Dept');  
-    const span = document.createElement('span'); // Create a new span element
-    td.appendChild(span);
-    span.className = 'dept-td';
-    span.innerText = 'HR Dept';
-    
-});
+  const [data, setData] = useState([
+        { id: 1,Name: "Testing Widget", "Assigned Representative": "2", Dept: ['other', 'development', 'hr', 'business'], "Number of Leads":0 },
+        { id: 2,Name: "Lead Generate", "Assigned Representative": "2", Dept: ['other', 'hr', 'business'], "Number of Leads":1 },
+        { id: 3,Name: "Test 2", "Assigned Representative": "2", Dept: ['other', 'hr', 'business'], "Number of Leads":1 },
+        { id: 4,Name: "Default", "Assigned Representative": "2", Dept: ['other', 'hr', 'business'], "Number of Leads":1 },
+        { id: 5,Name: "Test", "Assigned Representative": "2", Dept: ['other', 'hr', 'business'], "Number of Leads":1 },
+        { id: 6,Name: "Email Hunter", "Assigned Representative": "2", Dept: ['other', 'development'], "Number of Leads":1 },
+        { id: 7,Name: "WebCodeGenie Inc.", "Assigned Representative": "2", Dept: ['other', 'hr', 'business'], "Number of Leads":1 },
+        { id: 8,Name: "Smartwrp", "Assigned Representative": "2", Dept: ['other','design', 'business', 'hr'], "Number of Leads":1 },
+        { id: 7,Name: "Sendtechdata", "Assigned Representative": "2", Dept: ['other', 'hr', 'business'], "Number of Leads":1 },
+    ]);
+
+    const length = data.length;
 
   return(
     <>
@@ -33,91 +39,57 @@ const dashboard = () => {
       </div>
       <div>
       <table className="striped-table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Assigned Representatives</th>
-      <th>Departments</th>
-      <th>Number of Leads</th>
-      <th>Active Time</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><img src={GreenDot} width={10}/><span id='row1'>Data 1</span></td>
-      <td>Data 2</td>
-      <td id='Dept'></td>
-      <td>Data 4</td>
-      <td><p id='time'>12:00 AM - 11:59 PM</p><p id="days">M T W T F S S</p></td>
-      <td>
-        <img src={Pencil} id='pencil' width={20}/>
-        <img src={Globe} id='cross' width={20}/>
-        <img src={Settings} id='settings' width={20}/>
-        <img src={Code} id='code' width={20}/>
-        <img src={Bell} id='bell' width={20}/>
-        <img src={Cross} id='cross' width={20}/>        
-      </td>
-    </tr>
-    <tr>
-      <td>Data 1</td>
-      <td>Data 2</td>
-      <td>Data 3</td>
-      <td>Data 4</td>
-      <td>Data 5</td>
-      <td>Data 6</td>
-    </tr>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Assigned Representatives</th>
+            <th>Departments</th>
+            <th>Number of Leads</th>
+            <th>Active Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {data.map(row => (
 
-  </tbody>
-</table>
+          <tr key={row.id}>
+            <td id='first-row'><img src={GreenDot} width={10} alt="dot"/><span id='row1'>{row.Name}</span></td>
+            <td>{row['Assigned Representative']}</td>
+            <td id='Dept'>
 
-        {/* <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table> */}
+            {
+              row.Dept.map((dept, index) => (
+                                      <React.Fragment key={index}>
+                                          <span id="dept-tag">{dept}</span>                                    
+                                      </React.Fragment>
+                                  ))
+            }
+
+            </td>
+            <td>{row['Number of Leads']}</td>
+            <td><p id='time'>12:00 AM - 11:59 PM</p><p id="days">M T W T F S S</p></td>
+            <td>
+              <img src={Pencil} id='pencil' width={20} alt='icons'/>
+              <img src={Globe} id='cross' width={20} alt='icons'/>
+              <img src={Settings} id='settings' width={20} alt='icons'/>
+              <img src={Code} id='code' width={20} alt='icons'/>
+              <img src={Bell} id='bell' width={20} alt='icons'/>
+              <img src={Cross} id='cross' width={20} alt='icons'/>        
+            </td>
+          </tr>
+          
+          ))}
+
+          
+
+        </tbody>
+      </table>
+      <p id='last-desc'>Display 1 to {length} records out of {length}</p>
+      
       </div>
     </div>
     </>
   )
 }
 
-export default dashboard
-
-{/* <div className='dashboard-container'>
-        <div className='dashboard'>
-            <span className='desc'>
-                <b id="list">List</b> Widget | List
-            </span>
-            <div className='date-block'>
-                <button className='date-button'>Jan 21, 2024 to Feb 20, 2024</button>
-            </div>        
-        </div>
-        <div className='info-blocks'>
-        </div>
-    </div> */}
+export default Dashboard
